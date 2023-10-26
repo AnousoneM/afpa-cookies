@@ -9,9 +9,31 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body class="text-center">
-    <h1>INDEX.HTML</h1>
-    <button class="btn btn-primary" id="btnValid">Je suis majeur</button>
+<body>
+
+    <header>
+        <h1 class="text-center">I love Cookies</h1>
+        <p class="text-center h2">Un site de rencontre pour les amoureux de cookies</p>
+    </header>
+
+
+    <div class="border px-5 py-2 col-2 mx-auto">
+
+        <div>
+            <input type="checkbox" name="cgu" id="cgu" class="me-1"><label for="cgu">J'ai lu les CGU</label>
+        </div>
+        <div>
+            <input type="checkbox" name="legal" id="legal" class="me-1"><label for="legal">J'ai 18 ans ou +</label>
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary mt-2 d-block mx-auto" id="btnValid" disabled>Valider</button>
+
+    <footer class="text-center p-5 bg-danger">
+        Afpa 2023 - St Etienne du Rouvray
+    </footer>
+
 
     <script>
         // fonction permettant de rechercher un cookie selon son nom

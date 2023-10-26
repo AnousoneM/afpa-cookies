@@ -1,20 +1,25 @@
+// tableau contenant les données des personnes sous forme d'objets
+
 const people = [
     {
+        image: 'eaze.jpg',
         nom : 'Riri',
-        race : 'Canard',
+        prenom : 'Canard',
         couleur : 'Rouge',
-        food : 'Hamburger'
+        plat : 'Hamburger'
     },
     {
-        nom : 'Fifi',
-        race : 'Canard',
-        couleur : 'Vert',
-        food : 'Raclette'
+        image: 'eaze.jpg',
+        nom : 'Riri',
+        prenom : 'Canard',
+        couleur : 'Rouge',
+        plat : 'Hamburger'
     },
     {
-        nom : 'Loulou',
-        race : 'Canard',
-        couleur : 'Bleu',
-        food : 'Pizza'
+        image: 'eaze.jpg',
+        nom : 'Riri',
+        prenom : 'Canard',
+        couleur : 'Rouge',
+        plat : 'Hamburger'
     }
 ]
