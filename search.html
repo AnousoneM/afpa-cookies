@@ -9,8 +9,12 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body class="text-center">
-    <h1>SEARCH.HTML</h1>
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <h1 class="text-center">I love Cookies</h1>
+        <p class="text-center h2">Un site de rencontre pour les amoureux de cookies</p>
+    </header>
 
     <div id="allPeople" class="m-3">
         <!-- ici les personnages -->
@@ -18,10 +22,19 @@
 
     <a href="index.html" class="btn btn-secondary">Retour</a>
 
+    <footer class="text-center p-4 bg-danger bg-gradient mt-auto">
+        Afpa 2023 - St Etienne du Rouvray
+    </footer>
+
     <!-- script contenant uniquement le tableau people -->
     <script src="script/people.js"></script>
 
     <script>
+        // nous recherchons le cookie cgu, si ko, on effectue une redirection vers index.html
+        if (!getCookie('cgu')) {
+            window.location.href = 'index.html'
+        }
+
         // fonction permettant de rechercher un cookie selon son nom
         // elle return true ou false 
         function getCookie(name) {
@@ -33,12 +46,6 @@
                 return false
             }
             return true
-        }
-
-        // nous recherchons le cookie cgu, si ko, on effectue une redirection vers index.html
-        if (!getCookie('cgu')) {
-            window.location.href = 'index.html'
-            return
         }
 
         // fonction permettant d'envoyer l'index de l'objet dans le tableau people

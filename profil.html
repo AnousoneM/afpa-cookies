@@ -9,19 +9,40 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body class="text-center">
-    <h1>PROFIL.HTML</h1>
+<body class="d-flex flex-column min-vh-100">
 
-    <p id="profil" class="m-3">
-        <!-- ici les infos du profil -->
-    </p>
+    <header>
+        <h1 class="text-center">I love Cookies</h1>
+        <p class="text-center h2">Un site de rencontre pour les amoureux de cookies</p>
+    </header>
+
+    <div class="row justify-content-center" id="profil">
+
+        <div class="col-6">
+            <img class="img-fluid rounded" src="img/charlotte.jpg" alt="charlotte">
+            <p class="fw-bold fs-2 mb-1">Charlotte</p>
+            <p class="mb-1">Habite à Deauville</p>
+            <p>28 ans</p>
+        </div>
+
+    </div>
 
     <a href="search.html" class="btn btn-secondary">RETOUR SEARCH</a>
+
+    <footer class="text-center p-4 bg-danger bg-gradient mt-auto">
+        Afpa 2023 - St Etienne du Rouvray
+    </footer>
 
     <!-- script contenant uniquement le tableau people -->
     <script src="script/people.js"></script>
 
     <script>
+        // nous recherchons le cookie cgu à l'aide de notre fonction, si ko, on effectue une redirection vers index.html
+        if (!getCookie('cgu')) {
+            window.location.href = 'index.html'
+            abort()
+        }
+
         // fonction permettant de rechercher un cookie selon son nom
         // elle return true ou false 
         function getCookie(name) {
@@ -35,11 +56,6 @@
             return true
         }
 
-        // nous recherchons le cookie cgu à l'aide de notre fonction, si ko, on effectue une redirection vers index.html
-        if (!getCookie('cgu')) {
-            window.location.href = 'index.html'
-            return
-        }
 
         // nous allons créer un objet selon la class URLSearchParams pour pouvoir utiliser les différentes méthodes pour obtenir les paramètres de l'URL
         const myUrl = new URLSearchParams(window.location.search)
@@ -48,11 +64,8 @@
         let id = myUrl.get('index')
 
         // nous utilisons un innerHTML pour inclure les données du profil
-        document.querySelector('#profil').innerHTML = `
-            <li>Nom : ${people[id].nom}</li>
-            <li>Race : ${people[id].race}</li>
-            <li>Couleur du t-shirt : ${people[id].couleur}</li>
-        `
+        // document.querySelector('#profil').innerHTML = `
+        // `
     </script>
 </body>
 
