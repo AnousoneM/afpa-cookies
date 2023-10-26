@@ -13,14 +13,12 @@
 
     <header>
         <h1 class="text-center">I love Cookies</h1>
-        <p class="text-center h2">Un site de rencontre pour les amoureux de cookies</p>
+        <p class="text-center h2">Un site pour les amoureux de cookies</p>
     </header>
 
-    <div id="allPeople" class="m-3">
+    <div id="allPeople" class="m-3 row justify-content-evenly">
         <!-- ici les personnages -->
     </div>
-
-    <a href="index.html" class="btn btn-secondary">Retour</a>
 
     <footer class="text-center p-4 bg-danger bg-gradient mt-auto">
         Afpa 2023 - St Etienne du Rouvray
@@ -30,10 +28,6 @@
     <script src="script/people.js"></script>
 
     <script>
-        // nous recherchons le cookie cgu, si ko, on effectue une redirection vers index.html
-        if (!getCookie('cgu')) {
-            window.location.href = 'index.html'
-        }
 
         // fonction permettant de rechercher un cookie selon son nom
         // elle return true ou false 
@@ -48,18 +42,24 @@
             return true
         }
 
-        // fonction permettant d'envoyer l'index de l'objet dans le tableau people
-        function goProfil(index) {
-            window.location.href = `profil.html?index=${index}`
+        // nous recherchons le cookie cgu à l'aide de notre fonction, si ko, on effectue une redirection vers index.html pour valider de nouveau les CGU
+        if (!getCookie('cgu')) {
+            window.location.href = 'index.html'
+        } else { // sinon
+            // fonction permettant d'envoyer l'index de l'objet dans le tableau people
+            function goProfil(index) {
+                window.location.href = `profil.html?index=${index}`
+            }
+
+            // boucle permettant de créer nos personnages du tableau people
+            // utilisation d'une boucle for in pour avoir l'index des objets présents dans le tableau
+            for (const index in people) {
+                document.querySelector('#allPeople').innerHTML += `
+                <button class="btn btn-outline-dark col-lg-3 col-10 p-4 fs-1" onclick="goProfil(${index})">${people[index].nom}</button>
+            `
+            }
         }
 
-        // boucle permettant de créer nos personnages du tableau people
-        // utilisation d'une boucle for in pour avoir l'index des objets présents dans le tableau
-        for (const index in people) {
-            document.querySelector('#allPeople').innerHTML += `
-                <button class="btn btn-outline-dark" onclick="goProfil(${index})">${people[index].nom}</button>
-            `
-        }
     </script>
 </body>
 

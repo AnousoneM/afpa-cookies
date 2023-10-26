@@ -13,12 +13,12 @@
 
     <header>
         <h1 class="text-center">I love Cookies</h1>
-        <p class="text-center h2">Un site de rencontre pour les amoureux de cookies</p>
+        <p class="text-center h2">Un site pour les amoureux de cookies</p>
     </header>
 
-    <div class="row justify-content-center" id="profil">
+    <div class="row justify-content-center mx-0 mb-4" id="profil">
 
-        <div class="col-6">
+        <div class="col-lg-4 col-10 text-center">
             <img class="img-fluid rounded" src="img/charlotte.jpg" alt="charlotte">
             <p class="fw-bold fs-2 mb-1">Charlotte</p>
             <p class="mb-1">Habite à Deauville</p>
@@ -27,7 +27,7 @@
 
     </div>
 
-    <a href="search.html" class="btn btn-secondary">RETOUR SEARCH</a>
+    <a href="search.html" class="btn btn-secondary col-lg-2 col-10 d-block mx-auto">RETOUR SEARCH</a>
 
     <footer class="text-center p-4 bg-danger bg-gradient mt-auto">
         Afpa 2023 - St Etienne du Rouvray
@@ -37,11 +37,6 @@
     <script src="script/people.js"></script>
 
     <script>
-        // nous recherchons le cookie cgu à l'aide de notre fonction, si ko, on effectue une redirection vers index.html
-        if (!getCookie('cgu')) {
-            window.location.href = 'index.html'
-            abort()
-        }
 
         // fonction permettant de rechercher un cookie selon son nom
         // elle return true ou false 
@@ -56,16 +51,31 @@
             return true
         }
 
+        // nous recherchons le cookie cgu à l'aide de notre fonction, si ko, on effectue une redirection vers index.html pour valider de nouveau les CGU
+        if (!getCookie('cgu')) {
+            window.location.href = 'index.html'
+        } else { // sinon
+            // nous allons créer un objet selon la class URLSearchParams pour pouvoir utiliser les différentes méthodes pour obtenir les paramètres de l'URL
+            const myUrl = new URLSearchParams(window.location.search)
 
-        // nous allons créer un objet selon la class URLSearchParams pour pouvoir utiliser les différentes méthodes pour obtenir les paramètres de l'URL
-        const myUrl = new URLSearchParams(window.location.search)
+            // nous utilisons la méthode get pour obtenir la valeur
+            let index = myUrl.get('index')
 
-        // nous utilisons la méthode get pour obtenir la valeur
-        let id = myUrl.get('index')
+            // nous utilisons un innerHTML pour inclure les données du profil
+            document.querySelector('#profil').innerHTML = `
+        <div class="col-lg-4 col-10 text-center">
+            <img class="img-fluid rounded" src="img/${people[index].image}" alt="${people[index].nom}">
+            <p class="fw-bold fs-2 mb-1">${people[index].nom}</p>
+            <p class="mb-1">Habite ${people[index].ville}</p>
+            <p>${people[index].age} ans</p>
+        </div>
+        `
+        }
 
-        // nous utilisons un innerHTML pour inclure les données du profil
-        // document.querySelector('#profil').innerHTML = `
-        // `
+
+
+
+
     </script>
 </body>
 

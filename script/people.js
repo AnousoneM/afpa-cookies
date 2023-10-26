@@ -2,24 +2,21 @@
 
 const people = [
     {
-        image: 'eaze.jpg',
-        nom : 'Riri',
-        prenom : 'Canard',
-        couleur : 'Rouge',
-        plat : 'Hamburger'
+        image: 'kumiko.jpg',
+        nom : 'Kumiko',
+        age : '28',
+        ville : 'Rouen'
     },
     {
-        image: 'eaze.jpg',
-        nom : 'Riri',
-        prenom : 'Canard',
-        couleur : 'Rouge',
-        plat : 'Hamburger'
+        image: 'patrick.jpg',
+        nom : 'Patrick',
+        age : '23',
+        ville : 'Caen'
     },
     {
-        image: 'eaze.jpg',
-        nom : 'Riri',
-        prenom : 'Canard',
-        couleur : 'Rouge',
-        plat : 'Hamburger'
+        image: 'charlotte.jpg',
+        nom : 'Charlotte',
+        age : '26',
+        ville : 'Le Havre'
     }
 ]
