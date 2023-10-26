@@ -9,7 +9,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <header>
         <h1 class="text-center">I love Cookies</h1>
@@ -17,7 +17,7 @@
     </header>
 
 
-    <div class="border px-5 py-2 col-2 mx-auto">
+    <div class="border px-5 py-2 col-6 mx-auto">
 
         <div>
             <input type="checkbox" name="cgu" id="cgu" class="me-1"><label for="cgu">J'ai lu les CGU</label>
@@ -30,14 +30,47 @@
 
     <button class="btn btn-primary mt-2 d-block mx-auto" id="btnValid" disabled>Valider</button>
 
-    <footer class="text-center p-5 bg-danger">
+    <footer class="text-center p-4 bg-danger bg-gradient mt-auto">
         Afpa 2023 - St Etienne du Rouvray
     </footer>
 
-
     <script>
+        // nous recherchons le cookie nommé cgu, si true, on effectue une redirection vers search.html
+        // cela évite de valider de nouveau les CGU à chaque visite
+        if (getCookie('cgu')) {
+            window.location.href = 'search.html'
+            exit()
+        }
+
+        // déclarations de nos variables pour faciliter la manipulation du dom
+        let cgu = document.querySelector('#cgu')
+        let legal = document.querySelector('#legal')
+        let btnValid = document.querySelector('#btnValid')
+
+        // nous déclenchons un test lorsque que l'input cgu se modifie
+        cgu.addEventListener('input', function () {
+            if (cgu.checked && legal.checked) {
+                // nous activons le bouton
+                btnValid.disabled = false
+            } else {
+                // // nous le desactivons
+                btnValid.disabled = true
+            }
+        })
+
+        // nous déclenchons un test lorsque que l'input legal se modifie
+        legal.addEventListener('input', function () {
+            if (cgu.checked && legal.checked) {
+                // nous activons le bouton
+                btnValid.disabled = false
+            } else {
+                // // nous le desactivons
+                btnValid.disabled = true
+            }
+        })
+
         // fonction permettant de rechercher un cookie selon son nom
-        // elle return true ou false 
+        // retourne true si le cookie est trouvé, false si le cookie n'existe pas
         function getCookie(name) {
             const cookies = document.cookie.split('; ')
             const value = cookies
@@ -49,20 +82,13 @@
             return true
         }
 
-        // nous recherchons le cookie cgu, si ok, on effectue une redirection vers search.html
-        // cela évite de valider de nouveau les CGU à chaque visite
-        if (getCookie('cgu')) {
-            window.location.href = 'search.html'
-            exit()
-        }
-
         // nous allons créer un cookie "cgu" au click sur le bouton de validation
-        // on lui donne une durée de vie de 60 secs
+        // on lui donne une durée de vie d'une heure
         btnValid.addEventListener('click', function () {
-
-            let date = new Date(Date.now() + 60000); //60*0000 = 60 secs
+            // nous allons créer une date qui sera le temps de validité du cookie via expires
+            let date = new Date(Date.now() + 3600000); // 1min = 60*60 0000 ms
             date = date.toUTCString();
-            console.log(date)
+            // pour créer le cookie nous utilisons document.cookie
             document.cookie = `cgu=validated; path=/; expires=${date}; path=/`
             window.location.href = 'search.html'
         })

@@ -19,7 +19,7 @@
     <a href="search.html" class="btn btn-secondary">RETOUR SEARCH</a>
 
     <!-- script contenant uniquement le tableau people -->
-    <script src="people.js"></script>
+    <script src="script/people.js"></script>
 
     <script>
         // fonction permettant de rechercher un cookie selon son nom
@@ -35,10 +35,10 @@
             return true
         }
 
-        // nous recherchons le cookie cgu, si ko, on effectue une redirection vers index.html
+        // nous recherchons le cookie cgu à l'aide de notre fonction, si ko, on effectue une redirection vers index.html
         if (!getCookie('cgu')) {
             window.location.href = 'index.html'
-            exit()
+            return
         }
 
         // nous allons créer un objet selon la class URLSearchParams pour pouvoir utiliser les différentes méthodes pour obtenir les paramètres de l'URL

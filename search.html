@@ -19,7 +19,7 @@
     <a href="index.html" class="btn btn-secondary">Retour</a>
 
     <!-- script contenant uniquement le tableau people -->
-    <script src="people.js"></script>
+    <script src="script/people.js"></script>
 
     <script>
         // fonction permettant de rechercher un cookie selon son nom
@@ -38,7 +38,7 @@
         // nous recherchons le cookie cgu, si ko, on effectue une redirection vers index.html
         if (!getCookie('cgu')) {
             window.location.href = 'index.html'
-            exit()
+            return
         }
 
         // fonction permettant d'envoyer l'index de l'objet dans le tableau people
